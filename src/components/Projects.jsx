@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Folder, X, Github, ExternalLink } from 'lucide-react'
+import { Folder, X, Code, ExternalLink } from 'lucide-react'
 import Section from './Section'
 import './Projects.css'
 
@@ -219,7 +219,7 @@ function ProjectModal({ project, onClose }) {
                 <div className="modal-actions">
                     {project.repo && (
                         <a className="m-btn primary" href={project.repo} target="_blank" rel="noreferrer">
-                            <Github size={16} /> View code
+                            <Code size={16} /> View code
                         </a>
                     )}
                     {project.demo && (
