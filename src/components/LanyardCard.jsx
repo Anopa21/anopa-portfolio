@@ -1,48 +1,71 @@
-import { useEffect } from 'react'
-import { motion, useMotionValue, useSpring, useTransform, animate } from 'framer-motion'
-import { MapPin } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform, animate } from 'framer-motion'
+import { MapPin, X } from 'lucide-react'
 import './LanyardCard.css'
 import photo from '../assets/Ano.jpg'
+import qrImage from '../assets/portfolio-qr.png'
 
-// Decorative QR-style graphic (not scannable). A real QR code comes in a later step.
-const N = 21
-function buildQR() {
-    let seed = 7
-    const rnd = () => {
-        seed = (seed * 1103515245 + 12345) % 2147483648
-        return seed / 2147483648
-    }
-    const cells = []
-    for (let r = 0; r < N; r++) {
-        for (let c = 0; c < N; c++) {
-            const inFinder = (r < 8 && c < 8) || (r < 8 && c > N - 9) || (r > N - 9 && c < 8)
-            if (!inFinder && rnd() > 0.52) cells.push([c, r])
+function QrCode() {
+    const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        if (!open) return undefined
+        const onKey = (e) => e.key === 'Escape' && setOpen(false)
+        document.addEventListener('keydown', onKey)
+        const previous = document.body.style.overflow
+        document.body.style.overflow = 'hidden'
+        return () => {
+            document.removeEventListener('keydown', onKey)
+            document.body.style.overflow = previous
         }
-    }
-    return cells
-}
-const QR_CELLS = buildQR()
-const FINDERS = [
-    [0, 0],
-    [N - 7, 0],
-    [0, N - 7],
-]
+    }, [open])
 
-function QrGraphic() {
     return (
-        <svg viewBox={`0 0 ${N} ${N}`} shapeRendering="crispEdges" className="qr" aria-hidden="true">
-            <rect width={N} height={N} fill="#e6f6ff" />
-            {QR_CELLS.map(([c, r]) => (
-                <rect key={`${c}-${r}`} x={c} y={r} width="1" height="1" fill="#04101f" />
-            ))}
-            {FINDERS.map(([x, y]) => (
-                <g key={`${x}-${y}`}>
-                    <rect x={x} y={y} width="7" height="7" fill="#04101f" />
-                    <rect x={x + 1} y={y + 1} width="5" height="5" fill="#e6f6ff" />
-                    <rect x={x + 2} y={y + 2} width="3" height="3" fill="#04101f" />
-                </g>
-            ))}
-        </svg>
+        <>
+            <button
+                type="button"
+                className="qr-btn"
+                onClick={() => setOpen(true)}
+                aria-label="Enlarge QR code"
+            >
+                <img className="qr" src={qrImage} alt="QR code linking to this portfolio" draggable="false" />
+                <span className="qr-hint">Tap to enlarge</span>
+            </button>
+
+            {createPortal(
+                <AnimatePresence>
+                    {open && (
+                        <motion.div
+                            className="qr-backdrop"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setOpen(false)}
+                        >
+                            <motion.div
+                                className="qr-modal"
+                                role="dialog"
+                                aria-modal="true"
+                                aria-label="QR code"
+                                initial={{ opacity: 0, scale: 0.92 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.92 }}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <button className="qr-close" onClick={() => setOpen(false)} aria-label="Close">
+                                    <X size={20} />
+                                </button>
+                                <img src={qrImage} alt="Large QR code linking to this portfolio" />
+                                <p>Scan with your phone camera</p>
+                                <span>anopa-portfolio.vercel.app</span>
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
+        </>
     )
 }
 
@@ -133,7 +156,7 @@ export default function LanyardCard() {
                         <p className="tag">Data Science</p>
 
                         <div className="id-foot">
-                            <QrGraphic />
+                            <QrCode />
                             <div className="foot-text">
                                 <p className="uni">Albukhary International University</p>
                                 <p className="loc">

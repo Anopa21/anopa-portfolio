@@ -180,16 +180,6 @@
     border-top: 1px solid rgba(96, 165, 250, 0.22);
 }
 
-.qr {
-    flex: none;
-    width: 92px;
-    height: 92px;
-    padding: 5px;
-    border-radius: 9px;
-    background: #e6f6ff;
-    box-shadow: 0 0 14px rgba(34, 211, 238, 0.35);
-}
-
 .foot-text {
     display: grid;
     gap: 0.5rem;
@@ -207,6 +197,34 @@
     gap: 0.3rem;
     font-size: 0.85rem;
     color: var(--muted);
+}
+
+/* QR code */
+.qr-btn {
+    flex: none;
+    display: grid;
+    justify-items: center;
+    gap: 0.35rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.qr {
+    position: relative;
+    z-index: 3;
+    width: 124px;
+    height: 124px;
+    border-radius: 8px;
+    background: #ffffff;
+    image-rendering: auto;
+}
+
+.qr-hint {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
 }
 
 /* Light effects */
@@ -244,6 +262,63 @@
     color: var(--muted);
 }
 
+/* Enlarged QR window */
+.qr-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 1.25rem;
+    background: rgba(2, 4, 12, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.qr-modal {
+    position: relative;
+    width: min(380px, 100%);
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 22px;
+    background: #ffffff;
+    color: #04101f;
+    box-shadow: 0 0 60px rgba(34, 211, 238, 0.35), 0 40px 80px rgba(0, 0, 0, 0.7);
+}
+
+.qr-modal img {
+    display: block;
+    width: 100%;
+    image-rendering: auto;
+}
+
+.qr-modal p {
+    margin-top: 0.8rem;
+    font-weight: 600;
+}
+
+.qr-modal span {
+    font-size: 0.85rem;
+    color: #475569;
+    word-break: break-all;
+}
+
+.qr-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #04101f;
+    cursor: pointer;
+}
+
 @media (max-width: 860px) {
     .lanyard-col {
         margin-top: 0;
@@ -258,6 +333,11 @@
     .photo {
         width: 140px;
         height: 140px;
+    }
+
+    .qr {
+        width: 104px;
+        height: 104px;
     }
 }
 
