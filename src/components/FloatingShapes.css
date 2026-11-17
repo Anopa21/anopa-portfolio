@@ -1,0 +1,76 @@
+.floaters {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.float {
+    position: absolute;
+    color: rgba(34, 211, 238, 0.38);
+    animation: floaty 9s ease-in-out infinite;
+}
+
+.float.glyph {
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 1.4rem;
+}
+
+.float.ring {
+    width: 34px;
+    height: 34px;
+    border: 2px solid rgba(96, 165, 250, 0.35);
+    border-radius: 50%;
+}
+
+.float.square {
+    width: 22px;
+    height: 22px;
+    border: 2px solid rgba(34, 211, 238, 0.3);
+    border-radius: 5px;
+    transform: rotate(20deg);
+}
+
+.float.plus::before,
+.float.plus::after {
+    content: '';
+    position: absolute;
+    background: rgba(96, 165, 250, 0.4);
+}
+
+.float.plus {
+    width: 18px;
+    height: 18px;
+}
+
+.float.plus::before {
+    left: 8px;
+    top: 0;
+    width: 2px;
+    height: 18px;
+}
+
+.float.plus::after {
+    left: 0;
+    top: 8px;
+    width: 18px;
+    height: 2px;
+}
+
+@keyframes floaty {
+    50% {
+        transform: translateY(-20px) rotate(8deg);
+    }
+}
+
+@media (max-width: 860px) {
+    .hide-sm {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .float {
+        animation: none;
+    }
+}
