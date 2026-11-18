@@ -4,11 +4,8 @@ import { ArrowRight, Download } from 'lucide-react'
 import SocialLinks from './SocialLinks'
 import LanyardCard from './LanyardCard'
 import FloatingShapes from './FloatingShapes'
+import cvFile from '../assets/Anopa-Machipisa-CV.pdf'
 import './Hero.css'
-
-// When you have your CV: put the PDF in the "public" folder, e.g. public/Anopa-Machipisa-CV.pdf
-// then change the line below to: const CV_URL = '/Anopa-Machipisa-CV.pdf'
-const CV_URL = '/Anopa-Machipisa-CV.pdf'
 
 const roles = [
     'Data Science Enthusiast',
@@ -151,15 +148,9 @@ export default function Hero() {
                             Explore My Work <ArrowRight size={16} />
                         </a>
 
-                        {CV_URL ? (
-                            <a href={CV_URL} download className="btn ghost">
-                                <Download size={16} /> Download CV
-                            </a>
-                        ) : (
-                            <span className="btn ghost disabled" title="CV coming soon" aria-disabled="true">
-                                <Download size={16} /> Download CV
-                            </span>
-                        )}
+                        <a href={cvFile} download="Anopa-Machipisa-CV.pdf" className="btn ghost">
+                            <Download size={16} /> Download CV
+                        </a>
                     </motion.div>
 
                     <motion.div {...fade(2.1)}>
