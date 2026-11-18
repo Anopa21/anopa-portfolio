@@ -1,0 +1,250 @@
+.ai-intro {
+    color: var(--muted);
+    max-width: 62ch;
+    line-height: 1.7;
+    margin-bottom: 1.6rem;
+}
+
+.ai-card {
+    display: grid;
+    gap: 1.6rem;
+}
+
+.ai-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.ai-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.ai-field {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.ai-field.grow {
+    flex: 1 1 280px;
+}
+
+.ai-field label {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.ai-field input,
+.ai-field select {
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: 1px solid rgba(96, 165, 250, 0.22);
+    background: rgba(2, 6, 20, 0.55);
+    color: var(--text);
+    font: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ai-field input:focus,
+.ai-field select:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.3);
+}
+
+.ai-field select option {
+    background: #070d1f;
+}
+
+.ai-examples {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.ai-examples button {
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    border: 1px solid rgba(96, 165, 250, 0.22);
+    background: rgba(59, 130, 246, 0.08);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.ai-examples button:hover {
+    border-color: var(--cyan);
+}
+
+.ai-generate {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 0;
+    border-radius: 12px;
+    font: inherit;
+    font-weight: 600;
+    color: #02101f;
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    box-shadow: 0 0 24px rgba(34, 211, 238, 0.35);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.ai-generate:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.ai-generate:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.ai-output {
+    min-height: 140px;
+    padding: 1.2rem;
+    border-radius: 14px;
+    border: 1px dashed rgba(96, 165, 250, 0.25);
+    background: rgba(2, 6, 20, 0.4);
+}
+
+.ai-placeholder {
+    color: var(--muted);
+}
+
+.ai-status {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+
+.ai-status svg {
+    flex: none;
+    margin-top: 0.2rem;
+}
+
+.ai-status.info {
+    color: #f5c978;
+}
+
+.ai-status.error {
+    color: #fca5a5;
+}
+
+/* Loading animation */
+.ai-loading p {
+    color: var(--cyan);
+    margin-bottom: 1rem;
+}
+
+.dots::after {
+    content: '';
+    animation: dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: '';
+    }
+
+    25% {
+        content: '.';
+    }
+
+    50% {
+        content: '..';
+    }
+
+    75% {
+        content: '...';
+    }
+}
+
+.skeleton {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.skeleton i {
+    display: block;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(90deg,
+            rgba(96, 165, 250, 0.12),
+            rgba(34, 211, 238, 0.3),
+            rgba(96, 165, 250, 0.12));
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: -200% 0;
+    }
+}
+
+/* Article */
+.ai-article-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.ai-article-top button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid rgba(34, 211, 238, 0.5);
+    background: rgba(34, 211, 238, 0.08);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.ai-article-top button:hover {
+    background: rgba(34, 211, 238, 0.2);
+}
+
+.ai-article h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.ai-article h4 {
+    font-size: 1.05rem;
+    margin: 1.4rem 0 0.5rem;
+    color: var(--cyan);
+}
+
+.ai-article p {
+    color: #c3d0ee;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .skeleton i,
+    .dots::after {
+        animation: none;
+    }
+}

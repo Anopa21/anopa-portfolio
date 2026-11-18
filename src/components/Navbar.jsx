@@ -11,6 +11,7 @@ const links = [
     ['projects', 'Projects'],
     ['certificates', 'Certificates'],
     ['featured', 'Featured'],
+    ['ai-lab', 'AI Lab'],
     ['contact', 'Contact'],
 ]
 

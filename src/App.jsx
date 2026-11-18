@@ -8,6 +8,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Certificates from './components/Certificates'
 import Featured from './components/Featured'
+import AIShowcase from './components/AIShowcase'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -25,6 +26,7 @@ export default function App() {
         <Projects />
         <Certificates />
         <Featured />
+        <AIShowcase />
         <Contact />
       </main>
       <Footer />
