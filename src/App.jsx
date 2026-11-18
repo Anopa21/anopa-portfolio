@@ -1,3 +1,4 @@
+import LoadingScreen from './components/LoadingScreen'
 import Starfield from './components/Starfield'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -11,10 +12,12 @@ import Featured from './components/Featured'
 import AIShowcase from './components/AIShowcase'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import BackToTop from './components/BackToTop'
 
 export default function App() {
   return (
     <>
+      <LoadingScreen />
       <Starfield />
       <Navbar />
       <main>
@@ -30,6 +33,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </>
   )
 }
