@@ -8,7 +8,7 @@ import './Hero.css'
 
 // When you have your CV: put the PDF in the "public" folder, e.g. public/Anopa-Machipisa-CV.pdf
 // then change the line below to: const CV_URL = '/Anopa-Machipisa-CV.pdf'
-const CV_URL = ''
+const CV_URL = '/Anopa-Machipisa-CV.pdf'
 
 const roles = [
     'Data Science Enthusiast',
